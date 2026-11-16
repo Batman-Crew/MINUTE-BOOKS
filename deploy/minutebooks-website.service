@@ -1,0 +1,15 @@
+[Unit]
+Description=Minute Books website (Next.js)
+After=network.target
+
+[Service]
+User=deploy
+WorkingDirectory=/srv/minutebooks-website
+EnvironmentFile=/srv/minutebooks-website/.env.production.local
+Environment=NODE_ENV=production PORT=3000 HOSTNAME=127.0.0.1
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

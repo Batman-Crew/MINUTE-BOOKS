@@ -1,0 +1,19 @@
+#cloud-config
+# First-boot setup for the Minute Books website server (Ubuntu 24.04).
+package_update: true
+packages: [curl, rsync, ufw, debian-keyring, debian-archive-keyring, apt-transport-https, gnupg]
+users:
+  - name: deploy
+    shell: /bin/bash
+    sudo: "ALL=(ALL) NOPASSWD: /bin/systemctl restart minutebooks-website, /bin/systemctl status minutebooks-website, /bin/systemctl reload caddy"
+    ssh_authorized_keys:
+      - __SSH_PUBLIC_KEY__
+runcmd:
+  - curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+  - apt-get install -y nodejs
+  - curl -1sLf https://dl.cloudsmith.io/public/caddy/stable/gpg.key | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+  - curl -1sLf https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt -o /etc/apt/sources.list.d/caddy-stable.list
+  - apt-get update && apt-get install -y caddy
+  - mkdir -p /srv/minutebooks-website && chown deploy:deploy /srv/minutebooks-website
+  - ufw allow OpenSSH && ufw allow 80 && ufw allow 443 && ufw --force enable
+  - sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config && systemctl restart ssh

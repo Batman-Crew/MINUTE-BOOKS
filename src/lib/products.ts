@@ -1,0 +1,370 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  ScanBarcode, QrCode, Boxes, BookOpenCheck, ReceiptIndianRupee, UsersRound, Handshake,
+  ShoppingCart, ChartNoAxesCombined, Wallet, Printer, Split, CreditCard, ChefHat, Languages,
+  BellRing, Building2, TrendingUp, Layers, Warehouse, FileSpreadsheet, FileText, FileCheck2,
+  Calculator, Landmark, Scale, Banknote, Briefcase, Barcode, Tag, ClipboardList, Target,
+  CalendarDays, PackageSearch, Truck, Gauge, Users, Contact, HandCoins, Coins, Smartphone,
+  ArrowDownToLine, ArrowUpFromLine, Percent, ScrollText, LayoutDashboard, Repeat, Receipt,
+  Clock, Store, Network, School, GraduationCap, CalendarCheck, ClipboardCheck, MessagesSquare, IdCard,
+} from "lucide-react";
+
+export type MockupKey =
+  | "pos" | "restoconnect" | "inventory" | "accounting" | "gst"
+  | "payroll" | "crm" | "purchase" | "analytics" | "school" | "college";
+
+export type HeroVariant = "split" | "centered" | "immersive" | "editorial";
+
+export type Feature = { icon: LucideIcon; title: string; body: string };
+
+export type Product = {
+  slug: string;
+  name: string;
+  short: string;
+  category: "Operations" | "Finance" | "People" | "Growth" | "Education";
+  icon: LucideIcon;
+  eyebrow: string;
+  headline: string;
+  /** word(s) of the headline to set in the serif accent */
+  accent?: string;
+  sub: string;
+  mockup: MockupKey;
+  hero: HeroVariant;
+  capabilities: string[];
+  features: Feature[];
+  useCases: { title: string; body: string }[];
+  related: string[];
+  /** small print shown under capability lists where availability depends on setup */
+  note?: string;
+};
+
+export const products: Product[] = [
+  {
+    slug: "smart-pos",
+    name: "Smart POS & Billing",
+    short: "Fast counter billing with barcode scanning, split payments and thermal receipts.",
+    category: "Operations",
+    icon: ScanBarcode,
+    eyebrow: "Smart POS & Billing",
+    headline: "Every Sale. One Smart System.",
+    accent: "One Smart System.",
+    sub: "A counter that keeps up with your busiest hour. Scan, bill, collect and print in seconds — and every sale flows straight into stock and accounts.",
+    mockup: "pos",
+    hero: "split",
+    capabilities: ["Fast billing", "Barcode scanning", "Multiple payment methods", "Split payments", "Thermal receipt printing", "Sales tracking", "POS sessions & closing"],
+    features: [
+      { icon: ScanBarcode, title: "Scan and bill in seconds", body: "Barcode scanning, quick item search and keyboard-friendly billing keep the queue moving." },
+      { icon: Split, title: "Split payments", body: "Take one bill across cash, UPI and card. Every tender is recorded against the invoice." },
+      { icon: Printer, title: "Thermal receipts", body: "Print clean, GST-ready receipts on standard thermal printers, with your business details." },
+      { icon: CreditCard, title: "Every payment method", body: "Cash, UPI, cards and credit sales, configured the way your counter actually works." },
+      { icon: TrendingUp, title: "Live sales tracking", body: "See today's sales, top items and payment mix the moment a bill is closed." },
+      { icon: Clock, title: "Opening & closing", body: "POS opening balances and closing entries make shift handovers straightforward." },
+    ],
+    useCases: [
+      { title: "Retail counters", body: "Scan-heavy billing with instant stock deduction for every item sold." },
+      { title: "Supermarkets", body: "Multiple counters, one stock pool, one set of books." },
+      { title: "Bakeries & cafés", body: "Quick-tap items and fast payment collection for walk-in customers." },
+    ],
+    related: ["inventory", "accounting", "gst"],
+  },
+  {
+    slug: "restoconnect",
+    name: "RestoConnect",
+    short: "QR table ordering — guests scan, order and pay. The kitchen sees it instantly.",
+    category: "Operations",
+    icon: QrCode,
+    eyebrow: "RestoConnect · QR Ordering",
+    headline: "One QR. Every Table.",
+    accent: "Every Table.",
+    sub: "Guests scan, browse a photo menu, order and pay from their own phone — no app to install. Your kitchen sees every order the moment it's placed.",
+    mockup: "restoconnect",
+    hero: "immersive",
+    capabilities: ["QR table ordering", "Digital photo menu", "No app for guests", "Live kitchen orders", "Order tracking", "Online & counter payments", "Shared table bills", "GST invoices", "English & Tamil", "Guest web app", "Staff web app", "Android staff app"],
+    features: [
+      { icon: QrCode, title: "No app, no sign-up", body: "The QR knows the venue and the table. Guests land straight on their table's menu." },
+      { icon: ChefHat, title: "Live kitchen screen", body: "Orders appear instantly with a sound alert, wait timers and item-wise Start and Ready." },
+      { icon: Receipt, title: "Billing that does the maths", body: "GST bills with CGST and SGST, service charge and round-off, with gap-free invoice numbers." },
+      { icon: Users, title: "One shared bill per table", body: "Others at the table can ask to join. Part payments are recorded against the table." },
+      { icon: Languages, title: "English and Tamil", body: "Switch instantly without a reload. Dishes can carry Tamil names, typed once." },
+      { icon: Smartphone, title: "Built for staff, too", body: "A staff web app and an Android staff app with a tablet layout built for busy hands." },
+    ],
+    useCases: [
+      { title: "Cafés and restaurants", body: "Guests sit at tables. One QR per table." },
+      { title: "Cinemas and theatres", body: "Guests order from their seat. One QR per seat." },
+      { title: "Food courts", body: "Counters and zones, each with its own screen." },
+      { title: "Hotels and lounges", body: "Order to the room, the poolside or the lobby." },
+    ],
+    related: ["smart-pos", "inventory", "analytics"],
+  },
+  {
+    slug: "inventory",
+    name: "Inventory Management",
+    short: "Real-time stock across branches, with batches, reorder levels and valuation.",
+    category: "Operations",
+    icon: Boxes,
+    eyebrow: "Inventory Management",
+    headline: "Know Your Stock. Control Your Growth.",
+    accent: "Control Your Growth.",
+    sub: "Every sale, purchase and transfer updates stock in real time — across every branch and warehouse — so you reorder on time and never guess what's on the shelf.",
+    mockup: "inventory",
+    hero: "editorial",
+    capabilities: ["Real-time stock tracking", "Stock in & stock out", "Multi-branch inventory", "Low-stock alerts", "Reorder levels", "Batch tracking", "Stock valuation", "Product management"],
+    features: [
+      { icon: Gauge, title: "Real-time stock levels", body: "Stock moves the moment a bill, purchase or transfer is saved. No end-of-day reconciliation." },
+      { icon: Warehouse, title: "Multi-branch & warehouses", body: "See and move stock between stores and godowns, each with its own levels." },
+      { icon: BellRing, title: "Low-stock alerts", body: "Reorder levels per item and location flag what needs buying before it runs out." },
+      { icon: Layers, title: "Batch tracking", body: "Track batches and expiry for medicines, food and other perishable goods." },
+      { icon: Coins, title: "Stock valuation", body: "Know what your inventory is worth with valuation that ties directly to your accounts." },
+      { icon: Tag, title: "Product management", body: "Variants, units, barcodes, price lists and item groups, kept in one catalogue." },
+    ],
+    useCases: [
+      { title: "Medical shops", body: "Batch and expiry tracking for every strip and bottle." },
+      { title: "Wholesale & distribution", body: "Multi-warehouse stock with transfers and valuation." },
+      { title: "Garments & electronics", body: "Variants, serials and barcodes for large catalogues." },
+    ],
+    related: ["purchase", "smart-pos", "analytics"],
+  },
+  {
+    slug: "accounting",
+    name: "Accounting & Bookkeeping",
+    short: "Double-entry books, ledgers, bank reconciliation and real-time financial statements.",
+    category: "Finance",
+    icon: BookOpenCheck,
+    eyebrow: "Accounting & Bookkeeping",
+    headline: "Your Entire Business, Accounted For.",
+    accent: "Accounted For.",
+    sub: "Proper double-entry accounting that writes itself as you work. Sales, purchases, payments and payroll post automatically — your statements are always current.",
+    mockup: "accounting",
+    hero: "centered",
+    capabilities: ["Double-entry accounting", "General ledger", "Journal entries", "Cash & bank accounts", "Profit & loss", "Balance sheet", "Financial reports", "Bank reconciliation"],
+    features: [
+      { icon: Scale, title: "True double-entry", body: "Every transaction balances. A full chart of accounts, structured the way accountants expect." },
+      { icon: ScrollText, title: "General ledger & journals", body: "Drill from any report into the ledger and the original voucher behind it." },
+      { icon: Landmark, title: "Bank reconciliation", body: "Match bank statement lines against payments and receipts, and clear what's settled." },
+      { icon: FileSpreadsheet, title: "Statements on demand", body: "Profit & loss, balance sheet, cash flow and trial balance for any period." },
+      { icon: Banknote, title: "Cash & bank accounts", body: "Track every cash drawer and bank account with running balances." },
+      { icon: HandCoins, title: "Receivables & payables", body: "Ageing reports show who owes you and whom you owe — and for how long." },
+    ],
+    useCases: [
+      { title: "Owners", body: "A live view of profit and cash without waiting for month-end." },
+      { title: "Accountants", body: "Clean ledgers, journals and reconciliations to review and close." },
+      { title: "Multi-entity groups", body: "Books per company with consolidated reporting where configured." },
+    ],
+    related: ["gst", "payroll", "analytics"],
+  },
+  {
+    slug: "gst",
+    name: "GST & Compliance",
+    short: "GST on every invoice, GSTR-1 and GSTR-3B reports, e-invoice and e-way bill workflows.",
+    category: "Finance",
+    icon: ReceiptIndianRupee,
+    eyebrow: "GST & Compliance",
+    headline: "GST Without the Complexity.",
+    accent: "the Complexity.",
+    sub: "Tax is calculated on every invoice and purchase as you work, so your GST reports and returns data are ready when you are — not a month-end scramble.",
+    mockup: "gst",
+    hero: "split",
+    capabilities: ["GST calculations", "GST sales & purchase reports", "GSTR-1 & GSTR-3B reports", "E-invoicing workflows", "E-way bill workflows", "Tax summaries", "Compliance-ready records"],
+    note: "E-invoice and e-way bill generation require the relevant GST portal credentials and are enabled per business during setup.",
+    features: [
+      { icon: Calculator, title: "Automatic GST calculation", body: "CGST, SGST and IGST applied correctly on sales and purchases based on place of supply." },
+      { icon: FileText, title: "GSTR-1 & GSTR-3B reports", body: "Return-ready summaries built from the same invoices you already raised." },
+      { icon: FileCheck2, title: "E-invoicing workflow", body: "Generate IRN and signed QR for eligible invoices, from inside the invoice itself." },
+      { icon: Truck, title: "E-way bill workflow", body: "Prepare e-way bills for goods movement directly from delivery and sales documents." },
+      { icon: Percent, title: "HSN & tax summaries", body: "HSN-wise and rate-wise summaries for review before you file." },
+      { icon: ClipboardList, title: "Compliance-ready records", body: "Every invoice, credit note and adjustment is stored with an audit trail." },
+    ],
+    useCases: [
+      { title: "Growing SMEs", body: "Stay compliant without a separate tax tool." },
+      { title: "Distributors", body: "E-way bills and B2B invoices from the same workflow." },
+      { title: "Accountants & CAs", body: "Clean, reconciled data for every client return." },
+    ],
+    related: ["accounting", "smart-pos", "purchase"],
+  },
+  {
+    slug: "payroll",
+    name: "Payroll Management",
+    short: "Employee records, salary structures, payroll runs, payslips and salary reports.",
+    category: "People",
+    icon: UsersRound,
+    eyebrow: "Payroll Management",
+    headline: "People Management. Made Simpler.",
+    accent: "Made Simpler.",
+    sub: "Keep employee records, salary structures and monthly payroll in one place — and let salary entries post straight into your accounts.",
+    mockup: "payroll",
+    hero: "editorial",
+    capabilities: ["Employee records", "Salary structures", "Payroll processing", "Payslips", "Salary reports", "PF/ESI components where configured"],
+    note: "Statutory components such as PF and ESI are supported through configurable salary components.",
+    features: [
+      { icon: Contact, title: "Employee records", body: "Personal details, departments, designations, joining dates and documents in one profile." },
+      { icon: Layers, title: "Salary structures", body: "Earnings and deductions defined once, assigned to employees or groups." },
+      { icon: Repeat, title: "Monthly payroll runs", body: "Process payroll for the whole team, review, and submit in a single flow." },
+      { icon: FileText, title: "Payslips", body: "Clear, branded payslips generated for every employee each cycle." },
+      { icon: FileSpreadsheet, title: "Salary reports", body: "Salary registers and component-wise reports for review and records." },
+      { icon: BookOpenCheck, title: "Posted to accounts", body: "Payroll entries flow into the ledger — no double entry." },
+    ],
+    useCases: [
+      { title: "Retail & restaurant teams", body: "Shift-heavy teams with monthly salary runs." },
+      { title: "Manufacturing", body: "Structured earnings and deductions for larger workforces." },
+      { title: "Offices & services", body: "Clean payslips and salary records without spreadsheets." },
+    ],
+    related: ["accounting", "analytics", "crm"],
+  },
+  {
+    slug: "crm",
+    name: "CRM & Sales",
+    short: "Leads, pipelines, quotations, sales orders, customer history and follow-ups.",
+    category: "Growth",
+    icon: Handshake,
+    eyebrow: "CRM & Sales Management",
+    headline: "Turn Every Relationship Into Opportunity.",
+    accent: "Into Opportunity.",
+    sub: "From first enquiry to final invoice, every lead, quote and follow-up lives with the customer — so nothing slips and every conversation has context.",
+    mockup: "crm",
+    hero: "centered",
+    capabilities: ["Customer information", "Lead management", "Sales pipelines", "Quotations", "Sales orders", "Customer history", "Follow-ups"],
+    features: [
+      { icon: Target, title: "Lead management", body: "Capture enquiries, assign owners and track every lead through to a decision." },
+      { icon: Network, title: "Sales pipelines", body: "See opportunities by stage and focus your team on what's closest to closing." },
+      { icon: FileText, title: "Quotations to orders", body: "Turn a quote into a sales order, delivery and invoice without re-typing a line." },
+      { icon: Contact, title: "Complete customer history", body: "Orders, invoices, payments and notes for every customer on one timeline." },
+      { icon: CalendarDays, title: "Follow-ups", body: "Never miss a call-back. Scheduled follow-ups keep the pipeline moving." },
+      { icon: Coins, title: "Outstanding at a glance", body: "Know what a customer owes before you quote the next deal." },
+    ],
+    useCases: [
+      { title: "B2B sales teams", body: "Pipeline visibility from lead to invoice." },
+      { title: "Wholesale", body: "Repeat-order customers with credit history in view." },
+      { title: "Service businesses", body: "Quotes, follow-ups and invoicing in one flow." },
+    ],
+    related: ["analytics", "accounting", "smart-pos"],
+  },
+  {
+    slug: "purchase",
+    name: "Purchase Management",
+    short: "Purchase orders, suppliers, purchase invoices and outstanding payables.",
+    category: "Operations",
+    icon: ShoppingCart,
+    eyebrow: "Purchase Management",
+    headline: "Smarter Purchasing Starts Here.",
+    accent: "Starts Here.",
+    sub: "Raise purchase orders, receive goods and book supplier invoices in one flow — with stock and payables updated automatically at every step.",
+    mockup: "purchase",
+    hero: "split",
+    capabilities: ["Purchase orders", "Supplier management", "Purchase invoices", "Purchase history", "Purchase reports", "Supplier outstanding"],
+    features: [
+      { icon: ClipboardList, title: "Purchase orders", body: "Raise POs from reorder suggestions or manually, and track them to receipt." },
+      { icon: Truck, title: "Supplier management", body: "Supplier details, GSTINs, price history and terms in one place." },
+      { icon: ArrowDownToLine, title: "Goods receipt", body: "Receive against the PO and stock updates the moment goods arrive." },
+      { icon: Receipt, title: "Purchase invoices", body: "Book supplier bills with GST input captured automatically." },
+      { icon: HandCoins, title: "Supplier outstanding", body: "See what you owe each supplier and when it's due." },
+      { icon: FileSpreadsheet, title: "Purchase reports", body: "Item-wise and supplier-wise purchase analysis for any period." },
+    ],
+    useCases: [
+      { title: "Retail & supermarkets", body: "Reorder from suppliers before shelves run empty." },
+      { title: "Manufacturing", body: "Raw material purchasing tied to stock and costs." },
+      { title: "Restaurants", body: "Track ingredient purchases and supplier dues." },
+    ],
+    related: ["inventory", "accounting", "gst"],
+  },
+  {
+    slug: "analytics",
+    name: "Business Intelligence",
+    short: "Real-time dashboards for sales, profitability, products, customers and branches.",
+    category: "Growth",
+    icon: ChartNoAxesCombined,
+    eyebrow: "Business Intelligence & Analytics",
+    headline: "Don't Just See Numbers. Understand Your Business.",
+    accent: "Understand Your Business.",
+    sub: "Because every module shares one database, your dashboards reflect the whole business — sales, stock, profit and people — the moment it happens.",
+    mockup: "analytics",
+    hero: "immersive",
+    capabilities: ["Real-time dashboards", "Sales analytics", "Profitability reports", "Product performance", "Customer analytics", "Branch performance", "Business trends"],
+    features: [
+      { icon: LayoutDashboard, title: "Real-time dashboards", body: "Number cards and charts that update as bills, purchases and payments are saved." },
+      { icon: TrendingUp, title: "Sales analytics", body: "Sales by day, item, category, customer and salesperson." },
+      { icon: Coins, title: "Profitability", body: "Gross profit by item and invoice, alongside your P&L." },
+      { icon: PackageSearch, title: "Product performance", body: "Fast movers, slow movers and dead stock, side by side." },
+      { icon: Building2, title: "Branch performance", body: "Compare stores and locations on the same measures." },
+      { icon: Users, title: "Customer analytics", body: "Who buys most, how often, and who has gone quiet." },
+    ],
+    useCases: [
+      { title: "Owners", body: "One screen for the health of the whole business." },
+      { title: "Multi-branch chains", body: "Compare every location on equal terms." },
+      { title: "Finance teams", body: "Profitability and trends without exporting to spreadsheets." },
+    ],
+    related: ["accounting", "inventory", "crm"],
+  },
+  {
+    slug: "school-management",
+    name: "School Management",
+    short: "Admissions, student records, attendance, fees, exams and staff for schools.",
+    category: "Education",
+    icon: School,
+    eyebrow: "School Management",
+    headline: "Run the Whole School. From One Place.",
+    accent: "From One Place.",
+    sub: "Admissions, attendance, fees and exams in one connected system — so the office, teachers and accounts all work from the same records.",
+    mockup: "school",
+    hero: "split",
+    capabilities: ["Student admissions", "Student records", "Attendance", "Fee collection", "Timetables", "Exams & report cards", "Parent communication", "Staff & payroll"],
+    features: [
+      { icon: ClipboardCheck, title: "Admissions", body: "Take enquiries and applications, then turn them into student records." },
+      { icon: IdCard, title: "Student records", body: "Every student's class, contact and academic details in one place." },
+      { icon: CalendarCheck, title: "Attendance", body: "Mark attendance by class and see who has been absent." },
+      { icon: HandCoins, title: "Fee collection", body: "Set fee structures, collect payments and see what is still due." },
+      { icon: BookOpenCheck, title: "Exams & report cards", body: "Record marks by subject and prepare report cards." },
+      { icon: MessagesSquare, title: "Parent communication", body: "Keep parents informed about fees, attendance and school notices." },
+    ],
+    useCases: [
+      { title: "School office", body: "Admissions, records and fee receipts without separate registers." },
+      { title: "Class teachers", body: "Attendance and marks for each class, kept up to date." },
+      { title: "Management", body: "Fee collection and school accounts in one clear view." },
+    ],
+    related: ["accounting", "payroll", "analytics"],
+    note: "Available features depend on your setup. Book a demo to see what is included for your school.",
+  },
+  {
+    slug: "college-management",
+    name: "College Management",
+    short: "Admissions, departments, courses, attendance, fees and exams for colleges.",
+    category: "Education",
+    icon: GraduationCap,
+    eyebrow: "College Management",
+    headline: "Every Department. One Campus System.",
+    accent: "One Campus System.",
+    sub: "From admission to final results, keep departments, courses, fees and faculty connected in one system.",
+    mockup: "college",
+    hero: "editorial",
+    capabilities: ["Admissions", "Departments & courses", "Semester records", "Attendance", "Fee collection", "Exams & results", "Faculty & payroll", "Campus reports"],
+    features: [
+      { icon: ClipboardCheck, title: "Admissions", body: "Manage applications course by course, from enquiry to enrolment." },
+      { icon: Network, title: "Departments & courses", body: "Organise departments, courses, batches and semesters." },
+      { icon: CalendarCheck, title: "Attendance", body: "Track attendance by course, batch and semester." },
+      { icon: HandCoins, title: "Fee collection", body: "Semester fee structures, payments and dues in one place." },
+      { icon: ScrollText, title: "Exams & results", body: "Record internal and semester marks, then publish results." },
+      { icon: Users, title: "Faculty & staff", body: "Staff records and payroll connected to your accounts." },
+    ],
+    useCases: [
+      { title: "Admissions office", body: "One view of every application and enrolment." },
+      { title: "Departments", body: "Courses, attendance and marks kept by each department." },
+      { title: "Accounts & management", body: "Fee collection and dues across the whole campus." },
+    ],
+    related: ["accounting", "payroll", "analytics"],
+    note: "Available features depend on your setup. Book a demo to see what is included for your college.",
+  },
+];
+
+export const productBySlug = (slug: string) => products.find((p) => p.slug === slug);
+
+export const additionalModules: { icon: LucideIcon; name: string; body: string; href: string }[] = [
+  { icon: Contact, name: "Customer Management", body: "Profiles, credit limits and history.", href: "/products/crm" },
+  { icon: Truck, name: "Vendor Management", body: "Suppliers, terms and payables.", href: "/products/purchase" },
+  { icon: Landmark, name: "Banking & Reconciliation", body: "Match statements to entries.", href: "/products/accounting" },
+  { icon: Wallet, name: "Expense Management", body: "Record and categorise spend.", href: "/products/accounting" },
+  { icon: Briefcase, name: "Asset Management", body: "Fixed assets and depreciation.", href: "/products/accounting" },
+  { icon: Barcode, name: "Barcode Management", body: "Generate, print and scan labels.", href: "/products/inventory" },
+  { icon: Store, name: "Multi-Branch Management", body: "Every location, one system.", href: "/products/inventory" },
+  { icon: FileSpreadsheet, name: "Reports & Analytics", body: "Standard and custom reports.", href: "/products/analytics" },
+  { icon: Smartphone, name: "Mobile Access", body: "Work from your phone's browser.", href: "/products" },
+  { icon: ArrowUpFromLine, name: "Stock Transfers", body: "Move stock between branches.", href: "/products/inventory" },
+];

@@ -1,0 +1,5 @@
+# Caddy fetches and renews HTTPS certificates automatically once DNS points here.
+__DOMAINS__ {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:3000
+}
